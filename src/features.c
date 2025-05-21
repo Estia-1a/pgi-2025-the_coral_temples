@@ -14,3 +14,12 @@
 void helloWorld() {
     printf("Hello World !");
 }
+
+void tenth_pixel (char *source_path) {
+    unsigned char *data;
+    int w, h, c;
+
+    if ( read_image_data(source_path, &data, &w, &h, &c) ==0 && width >= 10) {
+        int i = 9 * c;
+    }
+}
