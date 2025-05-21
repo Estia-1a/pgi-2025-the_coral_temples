@@ -15,16 +15,15 @@ void helloWorld() {
     printf("Hello World !");
 }
 
-void tenth_pixel (char *source_path) {
+
+void tenth_pixel(char *source_path) {
     unsigned char *data;
     int w, h, c;
 
-    if ( read_image_data(source_path, &data, &w, &h, &c) ==0 && w >= 10) {
+    if (read_image_data(source_path, &data, &w, &h, &c) == 0 && w >= 10) {
         int i = 9 * c;
         printf("tenth_pixel: %d, %d, %d\n", data[i], data[i + 1], data[i + 2]);
-    } else {
-        fprintf(stderr, "Erreur : image invalide ou trop petite.\n");
+        free(data);
     }
-
-    free(data);
 }
+
