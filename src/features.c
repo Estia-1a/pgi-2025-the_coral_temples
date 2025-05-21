@@ -18,9 +18,9 @@ void helloWorld() {
 
 void tenth_pixel(char *source_path) {
     unsigned char *data;
-    int w, h, c;
+    int width, heigth, c;
 
-    if (read_image_data(source_path, &data, &w, &h, &c) == 0 && w >= 10) {
+    if (read_image_data(source_path, &data, &width, &heigth, &c) == 0 && width >= 10) {
         int i = 9 * c;
         printf("tenth_pixel: %d, %d, %d\n", data[i], data[i + 1], data[i + 2]);
         free(data);
