@@ -16,5 +16,7 @@ void helloWorld() {
 }
 
 void dimension (char *source_path){
-    
+    int width, height;
+
+    return width, height;
 }
