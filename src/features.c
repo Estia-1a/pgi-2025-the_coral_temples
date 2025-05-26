@@ -16,7 +16,14 @@ void helloWorld() {
 }
 
 void dimension (char *source_path){
-    int width, height;
-
-    return width, height;
+    unsigned char *data = NULL;
+    int width;
+    int height;
+    int channels;
+    if (read_image_data(source_path, &data, &width, &height, &channels)==0){
+        printf("Erreur lors de l'execution de la fonction: read_image_data()\n");
+    }
+    else{
+        printf("dimension : %d, %d\n", width, height);
+    }
 }
