@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
    */
   if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
 
-    dimension(configuration.filenames);
+    dimension(configuration.filenames[0]);
   }
 
   return 0;
