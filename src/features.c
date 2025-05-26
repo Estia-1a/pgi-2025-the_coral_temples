@@ -16,14 +16,25 @@ void helloWorld() {
 }
 
 void dimension (char *source_path){
+
+    /*FILE *file = fopen(source_path, "rb");
+
+    if (file == NULL) {
+        printf("Le fichier n'existe pas ou est inaccessible : %s\n", source_path);
+        return;
+    }
+    fclose(file);
+    printf("Le fichier existe : %s\n", source_path);*/
+
     unsigned char *data = NULL;
-    int width;
-    int height;
-    int channels;
-    if (read_image_data(source_path, &data, &width, &height, &channels)==0){
-        printf("Erreur lors de l'execution de la fonction: read_image_data()\n");
+    int width, height, channels, res;
+    
+    res = read_image_data(source_path, &data, &width, &height, &channels);
+
+    if (data==NULL){
+        printf("Erreur lors de l'execution de la fonction: read_image_data(), SORTIE : %d\n", res);
+        /*printf("data : %hhn\n", data);*/
+        return;
     }
-    else{
-        printf("dimension : %d, %d\n", width, height);
-    }
+    printf("dimension : %d, %d\n", width, height);
 }
