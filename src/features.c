@@ -19,6 +19,7 @@ void first_pixel(char *source_path) {
     unsigned char *data;
     int width, height, channel_count;
     read_image_data(source_path, &data, &width, &height, &channel_count);
+
     int r, g, b;
     r = data[0];
     g = data[1];
