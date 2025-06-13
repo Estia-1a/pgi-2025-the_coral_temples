@@ -119,4 +119,7 @@ void color_red(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
     read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int i = 0; i < width * height; i++){
+        int index = i * channel_count;
+    }
 }
