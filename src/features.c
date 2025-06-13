@@ -48,5 +48,12 @@ void min_pixel(char *source_path){
     int min_sum = 256*3;
     int min_r = 0, min_g = 0, min_b = 0;
     int min_x = 0, min_y = 0;
-    
+    for (int y = 0; y < height; y++){
+        for (int x = 0; x < width; x++){
+            int index = (y * width + x) * channel_count;
+            int r = data[index];
+            int g = data[index + 1];
+            int b = data[index + 2];
+        }
+    }
 }
