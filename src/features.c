@@ -140,3 +140,16 @@ void color_green(char *source_path){
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void color_blue(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int i = 0; i < width * height; i++){
+        int index = i * channel_count;
+        data[index] = 0;
+        data[index+1] = 0;
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
+}
