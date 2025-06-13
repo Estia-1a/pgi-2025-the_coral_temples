@@ -121,5 +121,9 @@ void color_red(char *source_path){
     read_image_data(source_path, &data, &width, &height, &channel_count);
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
+        data[index+1] = 0;
+        data[index+2] = 0;
     }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
 }
