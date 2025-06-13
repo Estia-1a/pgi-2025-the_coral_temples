@@ -11,6 +11,9 @@ void first_pixel (char *source_path);
 
 void dimension (char *source_path);
 
+void max_component (char *source_path, char component);
+
+
 void min_pixel (char *source_path);
 
 void max_pixel(char *source_path);
