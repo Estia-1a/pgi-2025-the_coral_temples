@@ -57,3 +57,31 @@ void first_pixel(char *source_path) {
     printf("first_pixel: %d, %d, %d\n",r, g, b);
 
 }
+void min_pixel(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int min_sum = 256*3;
+    int min_r = 0, min_g = 0, min_b = 0;
+    int min_x = 0, min_y = 0;
+    for (int y = 0; y < height; y++){
+        for (int x = 0; x < width; x++){
+            int index = (y * width + x) * channel_count;
+            int r = data[index];
+            int g = data[index + 1];
+            int b = data[index + 2];
+            int sum = r + g + b;
+            if (sum < min_sum){
+                min_sum = sum;
+                min_r = r;
+                min_g = g;
+                min_b = b;
+                min_x = x;
+                min_y = y;
+            }
+        }
+    }
+    printf("min_pixel (%d, %d): %d, %d, %d\n", min_x, min_y, min_r, min_g, min_b);
+    free_image_data(data);
+}
