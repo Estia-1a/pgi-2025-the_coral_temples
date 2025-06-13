@@ -57,6 +57,7 @@ void first_pixel(char *source_path) {
     printf("first_pixel: %d, %d, %d\n",r, g, b);
 
 }
+
 void max_component(char *source_path, char component) {
     unsigned char *data=NULL;
     int width, height, channel_count;
@@ -191,4 +192,38 @@ void color_blue(char *source_path){
     }
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
+}
+void stat_report(char *source_path) {
+    unsigned char *data;
+    int width, height, channel_count;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    FILE *fichier = fopen("C:\\Users\\louis.foucher--jube\\OneDrive - ESTIA\\Bureau\\Nouveau dossier\\Projet genie informatique\\pgi-2025-the_coral_temples\\stat_report.txt", "w");
+    if (!fichier) {
+        perror("Erreur création fichier");
+        return;
+    }
+    printf("Fichier ouvert avec succes !\n");
+
+
+    fprintf(fichier, "max_pixel\n");
+    fprintf(fichier, "min_pixel\n");
+    fprintf(fichier, "max_component_R\n");
+    fprintf(fichier, "max_component_G\n");
+    fprintf(fichier, "max_component_B\n");
+    fprintf(fichier, "min_component_R\n");
+    fprintf(fichier, "min_component_G\n");
+    fprintf(fichier, "min_component_B\n");
+
+    // fprintf(fichier, "max_pixel\n", max_pixel(*source_path));
+    //fprintf(fichier, "min_pixel\n", min_pixel);
+    //fprintf(fichier, "max_component_R\n", max_component R);
+    //(fichier, "max_component_G\n", max_component G);
+    //fprintf(fichier, "max_component_B\n", max_component B);
+    //fprintf(fichier, "min_component_R\n", max_component R);
+    //printf(fichier, "min_component_G\n", max_component G);
+    //fprintf(fichier, "min_component_B\n", max_component B);
+
+    fclose(fichier);
 }
