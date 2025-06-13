@@ -95,6 +95,44 @@ void max_component(char *source_path, char component) {
 printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
     free_image_data(data);
 }
+void min_component(char *source_path, char component) {
+    unsigned char *data=NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    /*intialisation de la valeur min et de x y min*/
+    int min_value = 256;
+    int min_x = 0, min_y = 0;
+
+    /*Ce bloc permet de choisir quelle composante comparer.*/
+    int component_index;
+    if (component == 'R') component_index = 0;
+    else if (component == 'G') component_index = 1;
+    else if (component == 'B') component_index = 2;
+    else {
+        printf("Composante invalide. Utilisez R, G ou B.\n");
+        return;
+    }
+
+    // component_index = 0;
+    /*parcour de l'image en y et x */
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int index = (y * width + x) * channel_count;
+            int value = data[index + component_index];
+         
+            /*comparaison de la valeur min pour trouver la plus grande et on garde le x et y*/
+            if (value < min_value) {
+                min_value = value;
+                min_x = x;
+                min_y = y;
+            }
+        }
+    }
+        
+printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
+    free_image_data(data);
+}
 
 void min_pixel(char *source_path){
     unsigned char *data = NULL;

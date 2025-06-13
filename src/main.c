@@ -55,6 +55,11 @@ int main(int argc, char **argv) {
     max_component(configuration.filenames[0], component);
   }
 
+  if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+    char component = argv[5][0];
+    min_component(configuration.filenames[0], component);
+  }
+
   if ( strncmp( configuration.command, "min_pixel", 9 ) == 0 ) {
     /* min_pixel() function is defined in feature.h and implemented in feature.c */
     min_pixel(configuration.filenames[0]);

@@ -3,6 +3,7 @@ tenth_pixel
 first_pixel
 dimension
 max_component
+min_component
 min_pixel
 max_pixel
 color_red
