@@ -49,7 +49,12 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
     /* dimension() function is defined in feature.h and implemented in feature.c */
     dimension(configuration.filenames[0]);
+}
+  if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+    char component = argv[5][0];
+    max_component(configuration.filenames[0], component);
   }
+
 
   return 0;
 }
