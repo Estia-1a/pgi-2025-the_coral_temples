@@ -57,3 +57,8 @@ void first_pixel(char *source_path) {
     printf("first_pixel: %d, %d, %d\n",r, g, b);
 
 }
+
+void stat_report(char *source_path){
+    unsigned char *data;
+    int max_pixel, min_pixel, max_component_R, max_component_G, max_component_B, min_component_R, min_component_G, min_component_B;
+}
