@@ -91,9 +91,9 @@ void max_pixel(char *source_path){
     int width, height, channel_count;
     read_image_data(source_path, &data, &width, &height, &channel_count);
 
-    int min_sum = 256*3;
-    int min_r = 0, min_g = 0, min_b = 0;
-    int min_x = 0, min_y = 0;
+    int max_sum = -1;
+    int max_r = 0, max_g = 0, max_b = 0;
+    int max_x = 0, max_y = 0;
     for (int y = 0; y < height; y++){
         for (int x = 0; x < width; x++){
             int index = (y * width + x) * channel_count;
@@ -101,16 +101,16 @@ void max_pixel(char *source_path){
             int g = data[index + 1];
             int b = data[index + 2];
             int sum = r + g + b;
-            if (sum < min_sum){
-                min_sum = sum;
-                min_r = r;
-                min_g = g;
-                min_b = b;
-                min_x = x;
-                min_y = y;
+            if (sum > max_sum){
+                max_sum = sum;
+                max_r = r;
+                max_g = g;
+                max_b = b;
+                max_x = x;
+                max_y = y;
             }
         }
     }
-    printf("min_pixel (%d, %d): %d, %d, %d\n", min_x, min_y, min_r, min_g, min_b);
+    printf("max_pixel (%d, %d): %d, %d, %d\n", max_x, max_y, max_r, max_g, max_b);
     free_image_data(data);
 }
