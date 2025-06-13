@@ -40,3 +40,13 @@ void first_pixel(char *source_path) {
     printf("first_pixel: %d, %d, %d\n",r, g, b);
 
 }
+void min_pixel(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int min_sum = 256*3;
+    int min_r = 0, min_g = 0, min_b = 0;
+    int min_x = 0, min_y = 0;
+    
+}
