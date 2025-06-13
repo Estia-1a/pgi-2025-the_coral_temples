@@ -54,6 +54,17 @@ void min_pixel(char *source_path){
             int r = data[index];
             int g = data[index + 1];
             int b = data[index + 2];
+            int sum = r + g + b;
+            if (sum < min_sum){
+                min_sum = sum;
+                min_r = r;
+                min_g = g;
+                min_b = b;
+                min_x = x;
+                min_y = y;
+            }
         }
     }
+    printf("min_pixel (%d, %d): %d, %d, %d\n", min_x, min_y, min_r, min_g, min_b);
+    free_image_data(data);
 }
