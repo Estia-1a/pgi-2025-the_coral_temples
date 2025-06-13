@@ -11,6 +11,24 @@
         "cwd": "${workspaceFolder}"
     },
     "files.associations": {
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "bit": "c",
+        "cctype": "c",
+        "cfloat": "c",
+        "climits": "c",
+        "cmath": "c",
+        "compare": "c",
+        "concepts": "c",
+        "cstdarg": "c",
+        "cstddef": "c",
+        "cstdint": "c",
+        "cstdio": "c",
+        "cstdlib": "c",
+        "cwchar": "c",
+        "exception": "c",
+        "type_traits": "c",
+        "limits": "c",
+        "new": "c",
+        "typeinfo": "c"
     },
 }
