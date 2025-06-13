@@ -58,7 +58,25 @@ void first_pixel(char *source_path) {
 
 }
 
-void stat_report(char *source_path){
+void stat_report(char *source_path) {
     unsigned char *data;
-    int max_pixel, min_pixel, max_component_R, max_component_G, max_component_B, min_component_R, min_component_G, min_component_B;
+    int width, height, channel_count;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    FILE *fichier = fopen("C:\\Users\\louis.foucher--jube\\OneDrive - ESTIA\\Bureau\\Nouveau dossier\\Projet genie informatique\\pgi-2025-the_coral_temples\\stat_report.txt", "w");
+    if (!fichier) {
+        perror("Erreur création fichier");
+        return;
+    }
+    printf("Fichier ouvert avec succès.\n");
+
+
+    fprintf(fichier, "Rapport d'image :\n");
+    //Autres choses à mettre dedans 
+
+    fclose(fichier);
 }
+
+
+
