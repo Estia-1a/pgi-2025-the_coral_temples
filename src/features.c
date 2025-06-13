@@ -114,3 +114,9 @@ void max_pixel(char *source_path){
     printf("max_pixel (%d, %d): %d, %d, %d\n", max_x, max_y, max_r, max_g, max_b);
     free_image_data(data);
 }
+
+void color_red(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+}
