@@ -3,5 +3,6 @@
 
 
 void helloWorld();
+void min_pixel();
 
 #endif
