@@ -55,6 +55,11 @@ int main(int argc, char **argv) {
     max_component(configuration.filenames[0], component);
   }
 
+  if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+    char component = argv[5][0];
+    min_component(configuration.filenames[0], component);
+  }
+
   if ( strncmp( configuration.command, "min_pixel", 9 ) == 0 ) {
     /* min_pixel() function is defined in feature.h and implemented in feature.c */
     min_pixel(configuration.filenames[0]);
@@ -78,6 +83,11 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "color_blue", 10 ) == 0 ) {
     /* max_pixel() function is defined in feature.h and implemented in feature.c */
     color_blue(configuration.filenames[0]);
+  }
+
+  if ( strncmp( configuration.command, "color_gray", 10 ) == 0 ) {
+    /* max_pixel() function is defined in feature.h and implemented in feature.c */
+    color_gray(configuration.filenames[0]);
   }
 
   if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
