@@ -1,0 +1,12 @@
+/home/runner/work/pgi-2025-the_coral_temples/pgi-2025-the_coral_temples/src/features.c: In function ‘rotate_cw’:
+/home/runner/work/pgi-2025-the_coral_temples/pgi-2025-the_coral_temples/src/features.c:245:34: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+  245 |     unsigned char *data_rotate = malloc(width * height * channel_count);
+      |                                  ^~~~~~
+/home/runner/work/pgi-2025-the_coral_temples/pgi-2025-the_coral_temples/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_coral_temples/pgi-2025-the_coral_temples/src/features.c:245:34: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+  245 |     unsigned char *data_rotate = malloc(width * height * channel_count);
+      |                                  ^~~~~~
+/home/runner/work/pgi-2025-the_coral_temples/pgi-2025-the_coral_temples/src/features.c:245:34: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
