@@ -90,6 +90,11 @@ int main(int argc, char **argv) {
     color_gray(configuration.filenames[0]);
   }
 
+    if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
+    /* max_pixel() function is defined in feature.h and implemented in feature.c */
+    color_gray_luminance(configuration.filenames[0]);
+  }
+
   if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
     /* stat_report() function is defined in feature.h and implemented in feature.c */
     stat_report(configuration.filenames[0]);
