@@ -92,9 +92,10 @@ void max_component(char *source_path, char component) {
         }
     }
         
-printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
+    printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
     free_image_data(data);
 }
+
 void min_component(char *source_path, char component) {
     unsigned char *data=NULL;
     int width, height, channel_count;
@@ -130,7 +131,7 @@ void min_component(char *source_path, char component) {
         }
     }
         
-printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
+    printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
     free_image_data(data);
 }
 
@@ -226,6 +227,21 @@ void color_blue(char *source_path){
         int index = i * channel_count;
         data[index] = 0;
         data[index+1] = 0;
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
+}
+
+void color_gray(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int i = 0; i < width * height; i++){
+        int index = i * channel_count;
+        float gray = (data[index] + data[index+1] + data[index+2])/3;
+        data[index] = gray;
+        data[index+1] = gray;
+        data[index+2] = gray;
     }
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
