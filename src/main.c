@@ -110,6 +110,11 @@ int main(int argc, char **argv) {
     color_invert(configuration.filenames[0]);
   }
 
+  if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* color_desaturatet() function is defined in feature.h and implemented in feature.c */
+    color_desaturate(configuration.filenames[0]);
+  }
+
   return 0;
 
 }

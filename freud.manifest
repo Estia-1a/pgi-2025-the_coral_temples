@@ -14,3 +14,4 @@ rotate_acw
 color_gray
 color_gray_luminance
 invert_color
+color_desaturate
