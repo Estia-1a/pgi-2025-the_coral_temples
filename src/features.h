@@ -32,4 +32,6 @@ void color_gray(char *source_path);
 
 void color_gray_luminance(char *source_path);
 
+void rotate_acw(char *source_path);
+
 #endif

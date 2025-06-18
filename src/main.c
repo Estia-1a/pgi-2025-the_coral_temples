@@ -44,12 +44,12 @@ int main(int argc, char **argv) {
    if ( strncmp( configuration.command, "first_pixel", 11 ) == 0 ) {
     /* first_pixel() function is defined in feature.h and implemented in feature.c */
     first_pixel(configuration.filenames[0]);
-}
+  }
   
   if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
     /* dimension() function is defined in feature.h and implemented in feature.c */
     dimension(configuration.filenames[0]);
-}
+  }
   if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
     char component = argv[5][0];
     max_component(configuration.filenames[0], component);
@@ -103,6 +103,11 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "stat_report", 11 ) == 0 ) {
     /* stat_report() function is defined in feature.h and implemented in feature.c */
     stat_report(configuration.filenames[0]);
+  }
+
+  if ( strncmp( configuration.command, "rotate_acw", 10 ) == 0 ) {
+    /* rotate_cw() function is defined in feature.h and implemented in feature.c */
+    rotate_cw(configuration.filenames[0]);
   }
 
   return 0;
