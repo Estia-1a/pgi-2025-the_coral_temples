@@ -246,3 +246,18 @@ void color_gray(char *source_path){
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void color_gray_luminance(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int i = 0; i < width * height; i++){
+        int index = i * channel_count;
+        float gray = (0.21*data[index]) + (0.72*data[index+1]) + (0.07*data[index+2]);
+        data[index] = gray;
+        data[index+1] = gray;
+        data[index+2] = gray;
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    free_image_data(data);
+}
