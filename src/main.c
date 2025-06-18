@@ -110,6 +110,11 @@ int main(int argc, char **argv) {
     color_invert(configuration.filenames[0]);
   }
 
+  if ( strncmp( configuration.command, "mirror_horizontal", 17 ) == 0 ) {
+    /* miror_horizontal() function is defined in feature.h and implemented in feature.c */
+    mirror_horizontal(configuration.filenames[0]);
+  }
+
   return 0;
 
 }

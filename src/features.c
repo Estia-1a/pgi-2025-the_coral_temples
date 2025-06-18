@@ -333,3 +333,14 @@ void color_invert(char *source_path){
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void mirror_horizontal(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+    
+}
