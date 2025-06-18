@@ -257,7 +257,6 @@ void rotate_cw(char *source_path){
     }
     write_image_data("image_out.bmp", data_rotate, new_width, new_height);
     free_image_data(data);
-    // free(data_rotate);
 }
 
 void color_gray(char *source_path){
