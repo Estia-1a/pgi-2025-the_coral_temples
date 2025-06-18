@@ -105,5 +105,10 @@ int main(int argc, char **argv) {
     stat_report(configuration.filenames[0]);
   }
 
+  if ( strncmp( configuration.command, "mirror_horizontal", 17 ) == 0 ) {
+    /* stat_report() function is defined in feature.h and implemented in feature.c */
+    void mirror_horizontal(configuration.filenames[0]);
+  }
+
   return 0;
 }

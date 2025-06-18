@@ -322,3 +322,8 @@ void stat_report(char *source_path) {
 
     fclose(fichier);
 }
+
+void mirror_horizontal(char *source_path){
+    unsigned char *data = NULL;
+    int width
+}
