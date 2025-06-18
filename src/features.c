@@ -230,3 +230,16 @@ void color_blue(char *source_path){
     write_image_data("image_out.bmp", data, width, height);
     free_image_data(data);
 }
+
+void rotate_cw(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    
+    int new_width = height;
+    int new_height = width;
+
+    unsigned char *data_rotate = malloc(width * height * channel_count);
+
+}
