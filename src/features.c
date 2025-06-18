@@ -242,4 +242,18 @@ void rotate_cw(char *source_path){
 
     unsigned char *data_rotate = malloc(width * height * channel_count);
 
+    for (int y = 0; y<height; y++){
+        for (int x = 0; x<width; x++){
+            int index = (y*width + x) * channel_count;
+            int new_x = height - 1 - y;
+            int new_y = x;
+            int new_index = (new_y * new_width + new_x)*channel_count;
+            for (int i = 0; i < channel_count; i++){
+                data_rotate[new_index + i] = data[index + i];
+            }
+        }
+    }
+    write_image_data("image_out.bmp", data_rotate, new_width, new_height);
+    free_image_data(data);
+    // free(data_rotate);
 }
