@@ -206,13 +206,14 @@ void stat_report(char *source_path) {
     }
     printf("Fichier ouvert avec succes !\n");
 
-    fprintf(fichier, "min_pixel\n", min_pixel(source_path));
-    fprintf(fichier, "max_component_R\n", max_component R(source_path));
-    fprinf(fichier, "max_component_G\n", max_component G(source_path));
-    fprintf(fichier, "max_component_B\n", max_component B(source_path));
-    fprintf(fichier, "min_component_R\n", max_component R(source_path));
-    fprintf(fichier, "min_component_G\n", max_component G(source_path));
-    fprintf(fichier, "min_component_B\n", max_component B(source_path));
+    /*fprintf(fichier, "min_pixel\n", min_pixel(source_path));
+    fprintf(fichier, "max_pixel\n", max_pixel(source_path));
+    fprintf(fichier, "max_component_R\n", max_component(source_path));
+    fprinf(fichier, "max_component_G\n", max_component(source_path));
+    fprintf(fichier, "max_component_B\n", max_component(source_path));
+    fprintf(fichier, "min_component_R\n", max_component(source_path));
+    fprintf(fichier, "min_component_G\n", max_component(source_path));
+    fprintf(fichier, "min_component_B\n", max_component(source_path));*/
 
     fclose(fichier);
 }
