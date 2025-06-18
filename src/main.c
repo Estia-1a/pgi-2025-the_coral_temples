@@ -120,6 +120,11 @@ int main(int argc, char **argv) {
     color_desaturate(configuration.filenames[0]);
   }
 
+  if ( strncmp( configuration.command, "mirror_vertical", 15 ) == 0 ) {
+    /* miror_vertical() function is defined in feature.h and implemented in feature.c */
+    mirror_vertical(configuration.filenames[0]);
+  }
+  
   return 0;
 
 }
