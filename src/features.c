@@ -348,5 +348,13 @@ void mirror_horizontal(char *source_path){
         free_image_data(data);
         return;
     }
-    
+    for (int y = 0; y<height; y++){
+        for (int x=0; x<width; x++){
+            int index = (y*width+x)*channel_count;
+            int new_index = (y * width + (width-1-x))*channel_count;
+            for (int i= 0; i< channel_count; i++){
+                mirordata[new_index + i] = data[index+i];
+            }
+        }
+    }
 }
