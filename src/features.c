@@ -3,6 +3,7 @@
 #include <string.h>
 #include "features.h"
 #include "utils.h"
+
 #include <stdlib.h>
 
 
@@ -16,6 +17,20 @@
 void helloWorld() {
     printf("Hello World !");
 }
+
+void tenth_pixel(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+ 
+    int r, g, b;
+    r = data[27];
+    g = data[28];
+    b = data[29];
+ 
+    printf("tenth_pixel: %d, %d, %d\n",r, g, b);
+ 
 
 void tenth_pixel(char *source_path) {
     unsigned char *data;
