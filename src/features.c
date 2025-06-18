@@ -357,4 +357,6 @@ void mirror_horizontal(char *source_path){
             }
         }
     }
+    write_image_data("image_out.bmp", mirordata, width, height);
+    free_image_data(data);
 }
