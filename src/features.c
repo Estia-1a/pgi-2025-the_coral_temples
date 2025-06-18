@@ -342,5 +342,11 @@ void mirror_horizontal(char *source_path){
         printf("Erreur lors de la lecture de l'image.\n");
         return;
     }
+    unsigned char *mirordata = malloc(width * height * channel_count);
+    if (!mirordata){
+        printf("Erreur d'allocation mémoire.\n");
+        free_image_data(data);
+        return;
+    }
     
 }
