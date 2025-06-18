@@ -13,3 +13,4 @@ rotate_cw
 rotate_acw
 color_gray
 color_gray_luminance
+invert_color
