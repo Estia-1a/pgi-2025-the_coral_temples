@@ -334,6 +334,33 @@ void color_invert(char *source_path){
     free_image_data(data);
 }
 
+void mirror_horizontal(char *source_path){
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+    unsigned char *mirordata = malloc(width * height * channel_count);
+    if (!mirordata){
+        printf("Erreur d'allocation mémoire.\n");
+        free_image_data(data);
+        return;
+    }
+    for (int y = 0; y<height; y++){
+        for (int x=0; x<width; x++){
+            int index = (y*width+x)*channel_count;
+            int new_index = (y * width + (width-1-x))*channel_count;
+            for (int i= 0; i< channel_count; i++){
+                mirordata[new_index + i] = data[index+i];
+            }
+        }
+    }
+    write_image_data("image_out.bmp", mirordata, width, height);
+    free_image_data(data);
+}
+
 void color_desaturate(char *source_path) {
     unsigned char *data = NULL;
     int width, height, channel_count;
