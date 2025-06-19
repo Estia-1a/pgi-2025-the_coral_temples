@@ -21,7 +21,10 @@ void tenth_pixel(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
     
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
  
     int r, g, b;
     r = data[27];
@@ -48,7 +51,10 @@ void dimension (char *source_path){
 void first_pixel(char *source_path) {
     unsigned char *data;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
 
     int r, g, b;
     r = data[0];
@@ -61,7 +67,10 @@ void first_pixel(char *source_path) {
 void max_component(char *source_path, char component) {
     unsigned char *data=NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
 
     /*intialisation de la valeur max et de x y max*/
     int max_value = -1;
@@ -99,7 +108,10 @@ printf("max_component %c (%d, %d): %d\n", component, max_x, max_y, max_value);
 void min_component(char *source_path, char component) {
     unsigned char *data=NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
 
     /*intialisation de la valeur min et de x y min*/
     int min_value = 256;
@@ -138,7 +150,10 @@ printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
 void min_pixel(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
 
     int min_sum = 256*3;
     int min_r = 0, min_g = 0, min_b = 0;
@@ -167,7 +182,10 @@ void min_pixel(char *source_path){
 void max_pixel(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
 
     int max_sum = -1;
     int max_r = 0, max_g = 0, max_b = 0;
@@ -196,7 +214,10 @@ void max_pixel(char *source_path){
 void color_red(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
         data[index+1] = 0;
@@ -209,7 +230,10 @@ void color_red(char *source_path){
 void color_green(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
         data[index] = 0;
@@ -222,7 +246,10 @@ void color_green(char *source_path){
 void color_blue(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
         data[index] = 0;
@@ -235,7 +262,10 @@ void color_blue(char *source_path){
 void color_gray(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
         float gray = (data[index] + data[index+1] + data[index+2])/3;
@@ -250,7 +280,10 @@ void color_gray(char *source_path){
 void color_gray_luminance(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     for (int i = 0; i < width * height; i++){
         int index = i * channel_count;
         float gray = (0.21*data[index]) + (0.72*data[index+1]) + (0.07*data[index+2]);
@@ -266,7 +299,10 @@ void rotate_cw(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
 
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
     
     int new_width = height;
     int new_height = width;
@@ -293,7 +329,10 @@ void rotate_acw(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
  
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
    
     int new_width = height;
     int new_height = width;
@@ -320,7 +359,10 @@ void color_invert(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
  
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
  
     for(int i = 0; i< width * height; i++){
         int index = i * channel_count;
@@ -365,7 +407,10 @@ void color_desaturate(char *source_path) {
     unsigned char *data = NULL;
     int width, height, channel_count;
  
-    read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)){
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
  
     for (int i = 0; i < width * height; i++) {
         int index = i * channel_count;
