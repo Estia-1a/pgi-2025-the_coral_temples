@@ -18,3 +18,4 @@ color_desaturate
 mirror_horizontal
 mirror_vertical
 mirror_total
+scale_crop

@@ -503,3 +503,35 @@ void mirror_total(char *source_path) {
     free(mirrored_data);
 
 }
+
+void scale_crop(char *source_path, int center_x, int center_y, int crop_width, int crop_height) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+ 
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+ 
+    int x_start = center_x - crop_width / 2;
+    int y_start = center_y - crop_height / 2;
+ 
+    if (x_start < 0) x_start = 0;
+    if (y_start < 0) y_start = 0;
+    if (x_start + crop_width > width) crop_width = width - x_start;
+    if (y_start + crop_height > height) crop_height = height - y_start;
+ 
+    unsigned char *cropped = malloc(crop_width * crop_height * channel_count);
+ 
+    for (int y = 0; y < crop_height; y++) {
+        for (int x = 0; x < crop_width; x++) {
+            int src = ((y_start + y) * width + (x_start + x)) * channel_count;
+            int dst = (y * crop_width + x) * channel_count;
+ 
+            for (int c = 0; c < channel_count; c++) {
+                cropped[dst + c] = data[src + c];
+            }
+        }
+    }
+ 
+    write_image_data("image_out.bmp", cropped, crop_width, crop_height);
+    free_image_data(data);
+    free(cropped);
+}

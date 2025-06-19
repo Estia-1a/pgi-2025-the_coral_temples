@@ -130,6 +130,20 @@ int main(int argc, char **argv) {
     mirror_total(configuration.filenames[0]);
   }
   
+  if (strncmp(configuration.command, "scale_crop", 10) == 0) {
+    if (argc < 9) {
+        printf("Plase use with: freud.exe -f image.jpeg -c scale_crop center_x center_y width height\n");
+    } 
+    else {
+      int center_x = atoi(argv[5]);
+      int center_y = atoi(argv[6]);
+      int crop_width = atoi(argv[7]);
+      int crop_height = atoi(argv[8]);
+
+      scale_crop(configuration.filenames[0], center_x, center_y, crop_width, crop_height);
+      }
+  }
+
   return 0;
 
 }
