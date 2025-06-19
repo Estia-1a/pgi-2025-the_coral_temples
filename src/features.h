@@ -50,4 +50,6 @@ void scale_bilinear(char *source_path, float scale_factor);
 
 void second_line(char *source_path);
 
+void print_pixel(char *source_path, int x, int y);
+
 #endif

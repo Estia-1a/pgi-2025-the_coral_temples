@@ -667,3 +667,25 @@ void second_line(char *source_path) {
 
     free_image_data(data);
 }
+
+#include "utils.h"
+
+void print_pixel(char *source_path, int x, int y) {
+    unsigned char *data = NULL;
+    int width, height, channels;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channels)) {
+        printf("Erreur lecture image\n");
+        return;
+    }
+
+    pixelRGB *p = get_pixel(data, width, height, channels, x, y);
+    if (!p) {
+        printf("Pixel hors image ou erreur\n");
+    } else {
+        printf("print_pixel (%d, %d): %d, %d, %d\n", x, y, p->R, p->G, p->B);
+        free(p);
+    }
+
+    free_image_data(data);
+}

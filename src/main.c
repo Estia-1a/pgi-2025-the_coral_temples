@@ -168,6 +168,17 @@ int main(int argc, char **argv) {
     second_line(configuration.filenames[0]);
   }
 
+  if (strncmp(configuration.command, "print_pixel", 11) == 0) {
+    if (argc >= 7) {
+      int x = atoi(argv[5]);
+      int y = atoi(argv[6]);
+      print_pixel(configuration.filenames[0], x, y);
+    } 
+    else {
+      printf("Usage: freud.exe -f image.jpeg -c print_pixel x y\n");
+    }
+  }
+
   return 0;
 
 }
