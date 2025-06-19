@@ -17,3 +17,4 @@ invert_color
 color_desaturate
 mirror_horizontal
 mirror_vertical
+mirror_total

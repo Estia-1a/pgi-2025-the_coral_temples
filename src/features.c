@@ -470,3 +470,13 @@ void mirror_vertical(char *source_path) {
     free_image_data(data);
     free(mirrored_data);
 }
+
+void mirror_total(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channel_count)) {
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+}
