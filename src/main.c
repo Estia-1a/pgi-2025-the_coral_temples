@@ -146,11 +146,21 @@ int main(int argc, char **argv) {
 
   if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
     if (argc >= 6) {
-        float scale = atof(argv[5]);
-        scale_nearest(configuration.filenames[0], scale);
+      float scale = atof(argv[5]);
+      scale_nearest(configuration.filenames[0], scale);
     } 
     else {
-        printf("Usage: freud.exe -f image.jpeg -c scale_nearest X\n");
+      printf("Please used wit: freud.exe -f image.jpeg -c scale_nearest X\n");
+    }
+  }
+
+  if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
+    if (argc >= 6) {
+      float scale = atof(argv[5]);
+      scale_bilinear(configuration.filenames[0], scale);
+    } 
+    else {
+      printf("Please use with: freud.exe -f image.jpeg -c scale_bilinear X\n");
     }
   }
 

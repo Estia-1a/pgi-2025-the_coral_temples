@@ -579,3 +579,66 @@ void scale_nearest(char *source_path, float scale_factor) {
     free_image_data(data);
     free(scaled);
 }
+
+void scale_bilinear(char *source_path, float scale_factor) {
+    unsigned char *data = NULL;
+    int width, height, channels;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channels)) {
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+
+    int new_width = (int)(width * scale_factor);
+    int new_height = (int)(height * scale_factor);
+
+    if (new_width <= 0 || new_height <= 0) {
+        printf("Facteur d'échelle trop petit !\n");
+        free_image_data(data);
+        return;
+    }
+
+    unsigned char *scaled = malloc(new_width * new_height * channels);
+    if (!scaled) {
+        printf("Erreur d'allocation mémoire.\n");
+        free_image_data(data);
+        return;
+    }
+
+    for (int y = 0; y < new_height; y++) {
+        for (int x = 0; x < new_width; x++) {
+            float gx = x / scale_factor;
+            float gy = y / scale_factor;
+
+            int x1 = (int)gx;
+            int y1 = (int)gy;
+            int x2 = x1 + 1;
+            int y2 = y1 + 1;
+
+            if (x2 >= width) x2 = width - 1;
+            if (y2 >= height) y2 = height - 1;
+
+            float dx = gx - x1;
+            float dy = gy - y1;
+
+            for (int c = 0; c < channels; c++) {
+                float Q11 = data[(y1 * width + x1) * channels + c];
+                float Q12 = data[(y1 * width + x2) * channels + c];
+                float Q21 = data[(y2 * width + x1) * channels + c];
+                float Q22 = data[(y2 * width + x2) * channels + c];
+
+                float R1 = Q11 * (1 - dx) + Q12 * dx;
+                float R2 = Q21 * (1 - dx) + Q22 * dx;
+                float P = R1 * (1 - dy) + R2 * dy;
+
+                int dst_index = (y * new_width + x) * channels + c;
+                scaled[dst_index] = (unsigned char)(P);
+            }
+        }
+    }
+
+    write_image_data("image_out.bmp", scaled, new_width, new_height);
+
+    free_image_data(data);
+    free(scaled);
+}
