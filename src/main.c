@@ -144,6 +144,16 @@ int main(int argc, char **argv) {
       }
   }
 
+  if (strncmp(configuration.command, "scale_nearest", 13) == 0) {
+    if (argc >= 6) {
+        float scale = atof(argv[5]);
+        scale_nearest(configuration.filenames[0], scale);
+    } 
+    else {
+        printf("Usage: freud.exe -f image.jpeg -c scale_nearest X\n");
+    }
+  }
+
   return 0;
 
 }

@@ -535,3 +535,47 @@ void scale_crop(char *source_path, int center_x, int center_y, int crop_width, i
     free_image_data(data);
     free(cropped);
 }
+
+void scale_nearest(char *source_path, float scale_factor) {
+    unsigned char *data = NULL;
+    int width, height, channels;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channels)) {
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+
+    int new_width = (int)(width * scale_factor);
+    int new_height = (int)(height * scale_factor);
+
+    if (new_width <= 0 || new_height <= 0) {
+        printf("Facteur d'échelle trop petit !\n");
+        free_image_data(data);
+        return;
+    }
+
+    unsigned char *scaled = malloc(new_width * new_height * channels);
+    if (!scaled) {
+        printf("Erreur d'allocation mémoire.\n");
+        free_image_data(data);
+        return;
+    }
+
+    for (int y = 0; y < new_height; y++) {
+        for (int x = 0; x < new_width; x++) {
+            int src_x = (int)(x / scale_factor);
+            int src_y = (int)(y / scale_factor);
+            int src_index = (src_y * width + src_x) * channels;
+            int dst_index = (y * new_width + x) * channels;
+
+            for (int c = 0; c < channels; c++) {
+                scaled[dst_index + c] = data[src_index + c];
+            }
+        }
+    }
+
+    write_image_data("image_out.bmp", scaled, new_width, new_height);
+
+    free_image_data(data);
+    free(scaled);
+}
