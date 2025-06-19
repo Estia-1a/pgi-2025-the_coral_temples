@@ -164,6 +164,10 @@ int main(int argc, char **argv) {
     }
   }
 
+  if (strncmp(configuration.command, "second_line", 11) == 0) {
+    second_line(configuration.filenames[0]);
+  }
+
   return 0;
 
 }

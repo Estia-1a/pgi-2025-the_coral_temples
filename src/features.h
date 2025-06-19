@@ -48,4 +48,6 @@ void scale_nearest(char *source_path, float scale_factor);
 
 void scale_bilinear(char *source_path, float scale_factor);
 
+void second_line(char *source_path);
+
 #endif

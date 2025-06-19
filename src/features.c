@@ -642,3 +642,28 @@ void scale_bilinear(char *source_path, float scale_factor) {
     free_image_data(data);
     free(scaled);
 }
+
+void second_line(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channels;
+
+    if (!read_image_data(source_path, &data, &width, &height, &channels)) {
+        printf("Erreur lors de la lecture de l'image.\n");
+        return;
+    }
+
+    if (height < 2) {
+        printf("Image trop petite : il faut au moins 2 lignes.\n");
+        free_image_data(data);
+        return;
+    }
+
+    int index = width * channels; // (1,0) correspond au premier pixel de la 2e ligne
+    int r = data[index];
+    int g = data[index + 1];
+    int b = data[index + 2];
+
+    printf("second_line: %d, %d, %d\n", r, g, b);
+
+    free_image_data(data);
+}
